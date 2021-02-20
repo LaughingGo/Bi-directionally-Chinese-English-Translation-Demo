@@ -36,6 +36,5 @@ model = MarianMTModel.from_pretrained(model_en2zh)
 inputs = tokenizer_en2zh(src_text, padding=True, return_tensors="pt")
 translate = model.generate(**inputs, max_length=128)
 # translate = model.generate(**tokenizer_en2zh.prepare_translation_batch(src_text))
-trans = tokenizer_en2zh.decode(translate, skip_special_tokens=True)
 trans = [tokenizer_en2zh.decode(ids, skip_special_tokens=True) for ids in translate]
 print(trans[0])
